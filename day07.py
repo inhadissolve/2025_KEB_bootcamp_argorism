@@ -1,39 +1,19 @@
-class Node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
-
-
 class Queue:
     def __init__(self):
-        self.front = None
-        self.rear = None
-        self._size = 0
+        self.s1 = []
+        self.s2 = []
 
     def enqueue(self, data):
-        self._size = self._size + 1
-        node = Node(data)
-        if self.rear is None:
-            self.front = node
-            self.rear = node
-        else:
-            self.rear.next = node
-            self.rear = node  # increase rear
-
+        while len(self.s1) != 0:
+            self.s2.append(self.s1.pop())
+        self.s1.append(data)
+        while len(self.s2) != 0:
+            self.s1.append(self.s2.pop())
 
     def dequeue(self):
-        if self.front is None:
-            raise IndexError('dequeue from empty queue')
-        self._size = self._size - 1
-        temp = self.front  # backup
-        self.front = self.front.next  # update
-        if self.front is None:
-            self.real = None
-        return temp.data
-
-
-    def size(self) -> int:
-        return self._size
+        if len(self.s1) == 0:
+            raise Exception("Empty queue!")
+        return self.s1.pop()
 
 
 if __name__ == "__main__":
@@ -41,7 +21,5 @@ if __name__ == "__main__":
     q.enqueue(7)
     q.enqueue(-11)
     q.enqueue(8)
-    print(q.size())
-    for _ in range(q.size()):
+    for _ in range(3):
         print(q.dequeue())
-    print(q.size())
