@@ -16,9 +16,18 @@ class LinkedList:
             current = current.next  # move
         current.next = Node(data)
 
+    def __str__(self):
+        node = self.head
+        while node is not None:
+            print(node.data)
+            node = node.next
+        return "end"
+
+
 
 if __name__ == "__main__":
     l = LinkedList()
     l.append(7)
     l.append(-11)
     l.append(8)
+    print(l)
