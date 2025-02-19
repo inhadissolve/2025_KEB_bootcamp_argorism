@@ -80,23 +80,33 @@ class BST:
 # 실행 코드
 if __name__ == "__main__":
     bst = BST()
-    numbers = [10, 15, 8, 3, 9]
-    for num in numbers:
-        bst.insert(num)
+    while True:
+        print("1. 삽입")
+        print("2. 검색")
+        print("3. 삭제")
+        print("4. 중위 순회 출력")
+        print("5. 종료")
+        choice = int(input("메뉴를 선택하세요: "))
 
-    print("BST 구성 완료")
-    print("중위 순회 결과:", end=' ')
-    bst.inorder_traversal(bst.root)
-    print()
-
-    find_group = int(input("검색할 번호를 입력하세요: "))
-    if bst.search(find_group):
-        print(f"{find_group}을(를) 찾았습니다")
-    else:
-        print(f"{find_group}이(가) 존재하지 않습니다")
-
-    delete_num = int(input("삭제할 번호를 입력하세요: "))
-    bst.delete(delete_num)
-    print("삭제 후 중위 순회 결과:", end=' ')
-    bst.inorder_traversal(bst.root)
-    print()
+        if choice == 1:
+            num = int(input("삽입할 숫자를 입력하세요: "))
+            bst.insert(num)
+        elif choice == 2:
+            find_group = int(input("검색할 번호를 입력하세요: "))
+            if bst.search(find_group):
+                print(f"{find_group}을(를) 찾았습니다")
+            else:
+                print(f"{find_group}이(가) 존재하지 않습니다")
+        elif choice == 3:
+            delete_num = int(input("삭제할 번호를 입력하세요: "))
+            bst.delete(delete_num)
+            print("삭제 완료")
+        elif choice == 4:
+            print("중위 순회 결과:", end=' ')
+            bst.inorder_traversal(bst.root)
+            print()
+        elif choice == 5:
+            print("프로그램을 종료합니다.")
+            break
+        else:
+            print("올바른 선택이 아닙니다. 다시 시도하세요.")
