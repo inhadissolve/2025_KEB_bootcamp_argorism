@@ -18,33 +18,23 @@ def print_graph(g) :
     print()
 
 
-def find_vertex(g, find_vtx) -> bool:
-	stack = []
-	visited_ary = []
-
-	current = 0
-	stack.append(current)
-	visited_ary.append(current)
-
-	while len(stack) != 0:
-		next = None
-		for vertex in range(g_size) :
-			if g.graph[current][vertex] != 0 :
-				if vertex in visited_ary :
-					pass
-				else :
-					next = vertex
-					break
-		if next is not None:
-			current = next
-			stack.append(current)
-			visited_ary.append(current)
-		else :
-			current = stack.pop()
-	if find_vtx in visited_ary :
+def dfs(g, current, find_vtx, visited_ary):
+	if current == find_vtx:  # 찾고자 하는 정점이면 True 반환
 		return True
-	else :
-		return False
+
+	visited_ary.add(current)  # 현재 정점 방문 처리
+
+	for vertex in range(g_size):
+		if g.graph[current][vertex] != 0 and vertex not in visited_ary:
+			if dfs(g, vertex, find_vtx, visited_ary):
+				return True  # 연결된 경로가 있다면 True 반환
+
+	return False  # 끝까지 탐색했지만 찾지 못하면 False 반환
+
+
+def find_vertex(g, find_vtx) -> bool:
+	visited_ary = set()  # 방문한 정점을 저장하는 집합 (중복 방지)
+	return dfs(g, 0, find_vtx, visited_ary)  # 0번 노드부터 탐색 시작
 
 
 G1 = None
