@@ -1,3 +1,5 @@
+#4.2) v4.1코드의 find_vertex 함수에 bfs를 적용
+
 from collections import deque
 
 class Graph:
