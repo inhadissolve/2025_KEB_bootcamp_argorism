@@ -54,6 +54,7 @@ for i in range(1000000):
 et = time.time()
 print(f"duration: {et - st}")
 
+
 print("# memo")
 st = time.time()
 for i in range(1000000):
@@ -62,8 +63,6 @@ et = time.time()
 print(f"duration: {et - st}")
 
 
-
-# 왜 재귀함수코드는 실행이 이상하게 나올까?
 print("# recu")
 st = time.time()
 for i in range(1000000):
