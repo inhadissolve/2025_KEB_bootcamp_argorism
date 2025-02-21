@@ -40,24 +40,24 @@ def fibonacci_memo(n) -> int:
         return memo[n]
 
 
-n = int(input())
-print(fibonacci_loop(n))
-print(fibonacci_recursion(n))
-print(fibonacci_memo(n))
+# n = int(input())
+# print(fibonacci_loop(n))
+# print(fibonacci_recursion(n))
+# print(fibonacci_memo(n))
 
 
 # 3가지 형식의 피보나치 함수 코드 시간재기
 print("# loop")
 st = time.time()
-for i in range(1_000_000*2):
-    fibonacci_loop(100)
+for i in range(1000000):
+    fibonacci_loop(10)
 et = time.time()
 print(f"duration: {et - st}")
 
 print("# memo")
 st = time.time()
-for i in range(1_000_000*2):
-    fibonacci_memo(100)
+for i in range(1000000):
+    fibonacci_memo(10)
 et = time.time()
 print(f"duration: {et - st}")
 
@@ -66,7 +66,8 @@ print(f"duration: {et - st}")
 # 왜 재귀함수코드는 실행이 이상하게 나올까?
 print("# recu")
 st = time.time()
-for i in range(1):
-    fibonacci_recursion(5)
+for i in range(1000000):
+    fibonacci_recursion(10)
 et = time.time()
 print(f"duration: {et - st}")
+print("%.5f" % (et-st))
